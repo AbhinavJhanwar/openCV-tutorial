@@ -16,7 +16,7 @@ pic = np.zeros((500, 500, 3), dtype='uint8')
 # image, initial pos, final pos, color, width
 cv2.rectangle(pic, (0,0), (500, 150), (255, 0, 0), 3, lineType=8, shift=0)
 
-# show image
+################ show image
 cv2.imshow("Image", pic)
 cv2.waitKey(0)
 
@@ -59,6 +59,11 @@ scale = 1
 M = cv2.getRotationMatrix2D(center, angle, scale)
 rotated = cv2.warpAffine(pic, M, (cols, rows))
 cv2.imshow("rotated", rotated)
+cv2.waitKey(0)
+
+#################################### grayscale
+gray = cv2.cvtColor(pic, cv2.COLOR_BGR2GRAY)
+cv2.imshow("Image.jpg", gray)
 cv2.waitKey(0)
 
 ###################### image thresholding
@@ -111,6 +116,21 @@ table = np.array([((i / 255.0) ** invGamma) * 255
 # apply gamma correction using the lookup table
 image_data = cv2.LUT(image_data, table)
 cv2.imshow("brightness", image_data)                           
+cv2.waitKey(0)
+
+################################### border
+# apply border in the image
+# top, bottom, left, right - border width in number of pixels in corresponding directions
+# borderType - It can be following types:
+# cv2.BORDER_CONSTANT - Adds a constant colored border. The value should be given as next argument.
+# cv2.BORDER_REFLECT - Border will be mirror reflection of the border elements, like this : fedcba|abcdefgh|hgfedcb
+# cv2.BORDER_REFLECT_101 or cv2.BORDER_DEFAULT - Same as above, but with a slight change, like this : gfedcb|abcdefgh|gfedcba
+# cv2.BORDER_REPLICATE - Last element is replicated throughout, like this: aaaaaa|abcdefgh|hhhhhhh
+# cv2.BORDER_WRAP - Can’t explain, it will look like this : cdefgh|abcdefgh|abcdefg
+# value - Color of border if border type is cv2.BORDER_CONSTANT
+border = cv2.copyMakeBorder(gray, 100, 100, 100, 100, cv2.BORDER_CONSTANT, value=255)
+border = cv2.resize(border, (400, 400))
+cv2.imshow("border", border)                           
 cv2.waitKey(0)
 
 
