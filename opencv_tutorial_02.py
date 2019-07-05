@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jan 10 15:50:43 2019
+
+@author: abhinav.jhanwar
+"""
+
 # USAGE
 # python opencv_tutorial_02.py --image tetris_blocks.png
 
