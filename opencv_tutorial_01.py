@@ -106,3 +106,17 @@ cv2.putText(output, "OpenCV + Abhinav!!!", (10, 25),
 	cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
 cv2.imshow("Image.jpg", output)
 cv2.waitKey(0)
+
+# flip image
+output = image.copy()
+hf = cv2.flip(image, 0)
+cv2.imshow("Horizontally flipped", hf)
+cv2.waitKey(0)
+
+vf = cv2.flip(image, 1)
+cv2.imshow("Vertically flipped", vf)
+cv2.waitKey(0)
+
+bf = cv2.flip(image, -1) 
+cv2.imshow("Horizontally and Vertically flipped", bf)
+cv2.waitKey(0)
